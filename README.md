@@ -209,3 +209,5 @@ Rejected commands.
 Columns in order: `line_no`, `command`, `reason`
 
 Binding choices: classification is IN_WINDOW, OUT_OF_WINDOW, MISSED or EARLY_TERMINATION; severity MINOR or MAJOR; payee_type SITE or SUBJECT; subject status values ELIGIBLE, SCREEN_FAILED, RANDOMISED, CONSENT_EXPIRED, WITHDRAWN, LOST_TO_FOLLOW_UP, COMPLETED; month as YYYY-MM; use NONE for an empty date.
+# T010-PS-126
+Clinical trial site enrolment ,visit window and subject payment engine
