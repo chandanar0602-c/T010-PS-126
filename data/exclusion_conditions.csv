@@ -1,0 +1,7 @@
+condition_code,description
+PREGNANCY,Pregnancy or lactation
+ACTIVE_TB,Active tuberculosis
+HIV,HIV infection
+HEPATITIS_B,Chronic hepatitis B
+CKD_STAGE_4,Chronic kidney disease stage 4 or 5
+MALIGNANCY,Active malignancy

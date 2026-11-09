@@ -1,0 +1,9 @@
+visit_code,day_offset,window_minus_days,window_plus_days,subject_payment,site_payment,procedures
+SCREENING,0,0,0,0.00,12000.00,Consent;History;Vitals;Labs
+D7,7,2,2,1500.00,8000.00,Vitals;Labs;AE review
+D14,14,2,2,1500.00,8000.00,Vitals;Labs;AE review
+D28,28,3,3,1500.00,8000.00,Vitals;Labs;AE review
+D56,56,5,5,2500.00,8000.00,Vitals;Labs;AE review
+D84,84,7,7,2500.00,8000.00,Vitals;Labs;AE review
+D168,168,14,21,3000.00,15000.00,Vitals;Labs;AE review;ECG;End-of-study assessment
+ET,0,0,14,0.00,8000.00,Vitals;Labs;Termination form

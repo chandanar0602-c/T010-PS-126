@@ -1,0 +1,7 @@
+site_id,site_name,city,enrolment_cap,activation_date,irb_expiry_date,pi_name
+BLR,Bengaluru Clinical Research Centre,Bengaluru,60,2026-03-02,2027-03-31,Dr. Arjun Singh
+MYS,Mysuru Medical Trials Unit,Mysuru,55,2026-03-09,2026-06-30,Dr. Suresh Hegde
+HYD,Hyderabad Institute of Clinical Studies,Hyderabad,50,2026-03-16,2027-03-31,Dr. Rajesh Sharma
+CHN,Chennai Research Hospital,Chennai,40,2026-05-04,2027-03-31,Dr. Chaitra Naik
+PUN,Pune Clinical Trials Centre,Pune,5,2026-03-02,2027-03-31,Dr. Ganesh Shetty
+KOC,Kochi Medical College Trial Site,Kochi,45,2026-03-23,2027-03-31,Dr. Shilpa Desai
