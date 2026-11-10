@@ -247,6 +247,26 @@ A subject may be re-screened once after at least 30 days if the original failure
 - Pending visits are classified as MISSED after the specified grace period.
 - Two consecutive missed visits result in LOST_TO_FOLLOW_UP.
 - Visits cannot be recorded before the previous visit's window opens.
+Visit Schedule and Window Rules
+
+Day 0 is the randomisation date. All visit target dates and visit windows are calculated from Day 0.
+
+Visit Code| Day Offset| Window Before| Window After| Allowed Visit Window
+D7| 7| 2 days| 2 days| Day 5 to Day 9
+D14| 14| 2 days| 2 days| Day 12 to Day 16
+D28| 28| 3 days| 3 days| Day 25 to Day 31
+D56| 56| 5 days| 5 days| Day 51 to Day 61
+D84| 84| 7 days| 7 days| Day 77 to Day 91
+D168| 168| 14 days| 21 days| Day 154 to Day 189
+
+Visit Classification Rules:
+
+1. A completed visit within the allowed window is classified as "IN_WINDOW".
+2. A completed visit outside the allowed window is classified as "OUT_OF_WINDOW".
+3. A pending visit is classified as "MISSED" when the current command date is later than the window closing date plus 7 days.
+4. A visit recorded exactly on the seventh grace day is classified as "OUT_OF_WINDOW", not "MISSED".
+5. All visit windows are calculated from the original randomisation date, not from the previous actual visit date.
+6. A visit cannot be recorded before the previous visit's window opening date.
 
 4.5 Deviation Management (BR-05)
 
@@ -271,6 +291,28 @@ A subject may be re-screened once after at least 30 days if the original failure
 - MISSED visits do not receive subject reimbursement.
 - Travel reimbursement is calculated at Rs 10 per kilometre, one way, subject to a maximum of Rs 800 per visit.
 - Early Termination visits receive the amount assigned to the next scheduled visit.
+Subject Payment Amounts and Rules
+
+The subject payment amounts are defined as follows:
+
+Visit| Subject Payment
+D7| ₹1,500
+D14| ₹1,500
+D28| ₹1,500
+D56| ₹2,500
+D84| ₹2,500
+D168| ₹2,500
+Early Termination (ET)| Amount of the next scheduled visit
+
+Subject Reimbursement Rules:
+
+1. Payments are provided only for completed protocol visits classified as "IN_WINDOW" or "OUT_OF_WINDOW".
+2. Missed visits are not eligible for subject payment.
+3. Travel reimbursement is ₹10 per kilometre for one-way travel.
+4. Travel reimbursement is capped at ₹800 per visit.
+5. Travel reimbursement applies to protocol visits and Early Termination visits only.
+6. Early Termination visits receive the payment amount of the next scheduled visit.
+7. Subject payments are tax-free up to ₹50,000 per subject per financial year. Amounts exceeding this limit must be flagged.
 
 4.8 Site Payments (BR-08)
 
@@ -279,6 +321,27 @@ A subject may be re-screened once after at least 30 days if the original failure
 - Eligible screen failures receive 50% of the screening payment, subject to the site limit of 20% of randomised subjects.
 - A 10% holdback is retained for eligible site payments.
 - Holdbacks are released at database lock when the site has no unresolved queries.
+Site Payment Amounts and Rules
+
+The site payment amounts are defined as follows:
+
+Payment Type| Amount
+Screening payment| ₹12,000
+Follow-up visit payment| ₹8,000
+End-of-study (EOS) payment| ₹15,000
+Screen failure payment| 50% of screening payment
+
+Site Payment Rules:
+
+1. Screening payment is earned on the subject's screening date.
+2. Screen failure payments are limited to 20% of the site's randomised subjects.
+3. Completed out-of-window visits receive 80% of the applicable site payment.
+4. A 10% holdback is applied to site payments.
+5. Holdback is released at database lock if there are no unresolved queries.
+6. Each unresolved query beyond 15 days results in a ₹500 deduction from the next site payment.
+7. If a site has 20 or more open queries, all payments are withheld until the number of open queries falls below 10.
+8. TDS of 10% is applied to site payments.
+9. Payments must follow the monthly settlement cycle and source-document verification rules.
 
 4.9 Query Management (BR-09)
 

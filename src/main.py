@@ -1,35 +1,58 @@
-from loader import load_all_data, load_commands
-from validation import validate_data
+from loader import load_all_data
+from screening import (
+    check_screening_eligibility,
+    check_rescreen_eligibility
+)
 
 
 def main():
 
-    print("CLINICAL TRIAL ENGINE")
-    print("=====================")
-
     data = load_all_data()
-    commands = load_commands()
+    subjects = data["subjects"]
 
-    print("\nDATA LOADING SUCCESSFUL")
+    test_cases = [
+        ("SCR-0027", "SCR-0070"),
+        ("SCR-0043", "SCR-0074"),
+        ("SCR-0163", "SCR-0266")
+    ]
 
-    for name, records in data.items():
-        print(f"{name}: {len(records)} records")
+    print("RESCREENING TEST")
+    print("================")
 
-    print("\nVALIDATION")
-    print("----------")
+    for original_id, rescreen_id in test_cases:
 
-    errors = validate_data(data)
+        original = next(
+            s for s in subjects
+            if s["screening_id"] == original_id
+        )
 
-    if errors:
-        print("Validation failed:")
+        rescreen = next(
+            s for s in subjects
+            if s["screening_id"] == rescreen_id
+        )
 
-        for error in errors:
-            print("-", error)
+        original_result = check_screening_eligibility(
+            original,
+            data["lab_ranges"],
+            data["exclusions"]
+        )
 
-    else:
-        print("Protocol and site validation successful!")
+        allowed, reason = check_rescreen_eligibility(
+            original,
+            rescreen,
+            original_result,
+            subjects
+        )
 
-    print("\nTotal commands:", len(commands))
+        print(
+            original_id,
+            "->",
+            rescreen_id,
+            "|",
+            "ALLOWED" if allowed else "REJECTED",
+            "|",
+            reason
+        )
 
 
 if __name__ == "__main__":
